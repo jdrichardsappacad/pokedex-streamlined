@@ -1,6 +1,7 @@
-"use strict";
+'use strict';
 
-const { commerce } = require("faker");
+//DO NOT USE FAKER ON SOLO PROJECT. IT IS DEPRECATED
+const { commerce } = require('faker');
 
 function random100() {
   return Math.floor(Math.random() * 100) + 1;
@@ -8,10 +9,10 @@ function random100() {
 
 function randomImage() {
   const images = [
-    "/images/pokemon_berry.svg",
-    "/images/pokemon_egg.svg",
-    "/images/pokemon_potion.svg",
-    "/images/pokemon_super_potion.svg",
+    '/images/pokemon_berry.svg',
+    '/images/pokemon_egg.svg',
+    '/images/pokemon_potion.svg',
+    '/images/pokemon_super_potion.svg',
   ];
   const index = Math.floor(Math.random() * images.length);
   return images[index];
@@ -33,10 +34,10 @@ function* generateItems() {
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return await queryInterface.bulkInsert("Items", [...generateItems()]);
+    return await queryInterface.bulkInsert('Items', [...generateItems()]);
   },
 
   down: async (queryInterface, Sequelize) => {
-    return await queryInterface.bulkDelete("Items");
+    return await queryInterface.bulkDelete('Items');
   },
 };

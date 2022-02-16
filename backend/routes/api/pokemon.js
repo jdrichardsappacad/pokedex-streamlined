@@ -5,7 +5,6 @@ const { randomItemImage } = require('./utils');
 const { generateItems } = require('../../db/pokemon-repository');
 const { Pokemon, Item } = require('../../db/models');
 const PokemonRepository = require('../../db/pokemon-repository');
-const ItemsRepository = require('../../db/items-repository');
 
 const pokemonValidations = require('../../validations/pokemon');
 const itemValidations = require('../../validations/items');
@@ -45,8 +44,7 @@ router.put(
     });
 
     const pokemon = await Pokemon.scope('detailed').findByPk(id);
-    // const id = await PokemonRepository.update(req.body);
-    // const pokemon = await PokemonRepository.one(id);
+
     return res.json(pokemon);
   })
 );
@@ -58,6 +56,7 @@ router.get(
   })
 );
 
+//not used in this app
 router.get(
   '/random',
   asyncHandler(async function (_req, res) {
@@ -66,6 +65,7 @@ router.get(
   })
 );
 
+//not used in this app
 router.get(
   '/battle',
   asyncHandler(async function (req, res) {
@@ -89,7 +89,6 @@ router.get(
 router.get(
   '/:id/items',
   asyncHandler(async function (req, res) {
-    // const items = await ItemsRepository.itemsByPokemonId(req.params.id);
     const items = await Item.findAll({
       where: {
         pokemonId: +req.params.id,
@@ -111,7 +110,7 @@ router.post(
     });
 
     const item = await Item.findByPk(newItem.id);
-    // const item = await ItemsRepository.addItem(req.body, req.params.id);
+
     return res.json(item);
   })
 );
