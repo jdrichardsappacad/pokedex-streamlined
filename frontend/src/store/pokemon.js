@@ -155,7 +155,6 @@ const pokemonReducer = (state = initialState, action) => {
       };
     }
     case ADD_ONE:
-      // if (!state[action.pokemon.id]) {
       const newState = {
         ...state,
         [action.pokemon.id]: action.pokemon,
@@ -164,14 +163,6 @@ const pokemonReducer = (state = initialState, action) => {
       pokemonList.push(action.pokemon);
       newState.list = sortList(pokemonList);
       return newState;
-    // }
-    // return {
-    //   ...state,
-    //   [action.pokemon.id]: {
-    //     ...state[action.pokemon.id],
-    //     ...action.pokemon,
-    //   },
-    // };
 
     case UPDATE_ONE:
       return {
