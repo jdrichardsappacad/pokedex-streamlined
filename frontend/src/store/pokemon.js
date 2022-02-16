@@ -133,14 +133,12 @@ const pokemonReducer = (state = initialState, action) => {
       action.list.forEach(pokemon => {
         allPokemon[pokemon.id] = pokemon;
       });
-      const x = {
+      return {
         ...allPokemon,
         ...state,
         list: sortList(action.list),
       };
 
-      console.log('x', x);
-      return x;
     case LOAD_TYPES:
       return {
         ...state,
