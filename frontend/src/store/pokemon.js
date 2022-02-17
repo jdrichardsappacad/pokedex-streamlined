@@ -118,6 +118,8 @@ const initialState = {
   types: [],
 };
 
+//utility function. This could go in another file
+//returns an ordered array of pokemon numbers
 const sortList = list => {
   return list
     .sort((pokemonA, pokemonB) => {
