@@ -133,18 +133,17 @@ const pokemonReducer = (state = initialState, action) => {
       action.list.forEach(pokemon => {
         allPokemon[pokemon.id] = pokemon;
       });
+
       return {
         ...allPokemon,
         ...state,
         list: sortList(action.list),
       };
-
     case LOAD_TYPES:
       return {
         ...state,
         types: action.types,
       };
-
     case GET_ONE: {
       return {
         ...state,
@@ -163,7 +162,6 @@ const pokemonReducer = (state = initialState, action) => {
       pokemonList.push(action.pokemon);
       newState.list = sortList(pokemonList);
       return newState;
-
     case UPDATE_ONE:
       return {
         ...state,
@@ -172,7 +170,6 @@ const pokemonReducer = (state = initialState, action) => {
           ...action.pokemon,
         },
       };
-
     case LOAD_ITEMS:
       return {
         ...state,
