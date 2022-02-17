@@ -1,4 +1,6 @@
-//  ***Use of faker not allowed on Solo React Project***
+/* THIS FILE IS MAINLY TO STORE UTILITY FUNCTIONS, NOT TO MAKE DB CALLS */
+
+//  ***Use of faker not allowed on Solo React Project it id deprecated***
 const { commerce } = require('faker');
 const { Pokemon } = require('./models');
 
@@ -29,31 +31,6 @@ function* generateItems() {
     };
   }
 }
-
-// async function create(details) {
-//   details.items = [...generateItems()];
-//   const pokemon = await Pokemon.create(details, { include: ['items'] });
-//   return pokemon.id;
-// }
-
-// async function update(details) {
-//   const id = details.id;
-//   delete details.id;
-//   await Pokemon.update(details, {
-//     where: { id },
-//     returning: true,
-//     plain: true,
-//   });
-//   return id;
-// }
-
-// async function one(id) {
-//   return await Pokemon.scope('detailed').findByPk(id);
-// }
-
-// async function list() {
-//   return await Pokemon.findAll();
-// }
 
 async function random() {
   const pokemon = await Pokemon.scope(['random', 'opponent']).findAll();
@@ -94,11 +71,6 @@ async function battle(allyId, opponentId) {
 }
 
 module.exports = {
-  // create,
-  // update,
-  // list,
-  // one,
   random,
-  battle,
   generateItems,
 };
