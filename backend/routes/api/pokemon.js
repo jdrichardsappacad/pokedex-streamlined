@@ -14,6 +14,7 @@ const router = express.Router();
 router.get(
   '/',
   asyncHandler(async function (_req, res) {
+    console.log(PokemonRepository.getItem());
     const pokemon = await Pokemon.findAll();
     return res.json(pokemon);
   })

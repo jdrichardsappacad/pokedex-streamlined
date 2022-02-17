@@ -1,11 +1,15 @@
 /* THIS FILE IS MAINLY TO STORE UTILITY FUNCTIONS, NOT TO MAKE DB CALLS */
 
-//  ***Use of faker not allowed on Solo React Project it id deprecated***
-const { commerce } = require('faker');
 const { Pokemon } = require('./models');
+const items = require('./pokemon-items-data');
 
 function random100() {
   return Math.floor(Math.random() * 100) + 1;
+}
+
+function getItem() {
+  const random = Math.floor(Math.random() * 206);
+  return items[random];
 }
 
 function randomImage() {
@@ -20,11 +24,10 @@ function randomImage() {
 }
 
 // generator docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
-//  ***Use of faker not allowed on Solo React Project***
 function* generateItems() {
   for (let i = 0; i < 3; i += 1) {
     yield {
-      name: commerce.productName(),
+      name: getItem(),
       price: random100(),
       happiness: random100(),
       imageUrl: randomImage(),
@@ -73,4 +76,5 @@ async function battle(allyId, opponentId) {
 module.exports = {
   random,
   generateItems,
+  getItem,
 };
