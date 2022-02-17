@@ -1,7 +1,6 @@
 'use strict';
 
-//DO NOT USE FAKER ON SOLO PROJECT. IT IS DEPRECATED
-const { commerce } = require('faker');
+const { getItem } = require('../pokemon-repository');
 
 function random100() {
   return Math.floor(Math.random() * 100) + 1;
@@ -23,7 +22,7 @@ function* generateItems() {
     for (let i = 0; i < 3; i += 1) {
       yield {
         pokemonId,
-        name: commerce.productName(),
+        name: getItem(),
         price: random100(),
         happiness: random100(),
         imageUrl: randomImage(),
